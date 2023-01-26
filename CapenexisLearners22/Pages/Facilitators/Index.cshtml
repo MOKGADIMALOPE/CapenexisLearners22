@@ -2,14 +2,20 @@
 @model CapenexisLearners22.Pages.Facilitators.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Capenexis Facilitators";
 }
 
-<h1>Index</h1>
+<h1>Capenexis Facilitators</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<form>
+    <p>
+        Title: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -25,30 +31,30 @@
             <th>
                 @Html.DisplayNameFor(model => model.Facilitator[0].NumberOfLearners)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Facilitator) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SurName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NationalIdentityNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfLearners)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Facilitator)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SurName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NationalIdentityNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfLearners)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
